@@ -1,3 +1,7 @@
-uiautomation
-schedule
-pandas
+uiautomation~=2.0.18
+schedule~=1.1.0
+pandas~=1.5.3
+office~=0.0.1a0
+PyOfficeRobot~=0.1.2
+setuptools~=65.5.1
+poai~=0.0.7

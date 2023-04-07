@@ -212,10 +212,59 @@ class WeChat:
     def SendFiles(self, *filepath, not_exists='ignore'):
         """向当前聊天窗口发送文件
         not_exists: 如果未找到指定文件，继续或终止程序
+        filepath (list): 要复制文件的绝对路径"""
+        key = ''
+        print("in new SendFiles func")
+        for file in filepath:
+            file = os.path.realpath(file)
+            if not os.path.exists(file):
+                if not_exists.upper() == 'IGNORE':
+                    print('File not exists:', file)
+                    continue
+                elif not_exists.upper() == 'RAISE':
+                    raise FileExistsError('File Not Exists: %s'%file)
+                else:
+                    raise ValueError('param not_exists only "ignore" or "raise" supported')
+            key += '<EditElement type="3" filepath="%s" shortcut="" />'%file
+
+        self.EditMsg.SendKeys(' ', waitTime=0)
+        self.EditMsg.SendKeys('{Ctrl}a', waitTime=0)
+        self.EditMsg.SendKeys('{Ctrl}c', waitTime=0)
+        self.EditMsg.SendKeys('{Delete}', waitTime=0)
+        while True:
+            try:
+                data = WxUtils.CopyDict()
+                break
+            except:
+                pass
+
+        for i in data:
+            data[i] = data[i].replace(b'<EditElement type="0"><![CDATA[ ]]></EditElement>', key.encode())
+
+        data1 = {
+            '13': '',
+            '16': b'\x04\x08\x00\x00',
+            '1': b'',
+            '7': b''
+        }
+        data.update(data1)
+
+        wc.OpenClipboard()
+        wc.EmptyClipboard()
+        for k, v in data.items():
+            wc.SetClipboardData(int(k), v)
+        wc.CloseClipboard()
+        self.SendClipboard()
+        return 1
+
+    def SendFiles_old(self, *filepath, not_exists='ignore'):
+        """向当前聊天窗口发送文件
+        not_exists: 如果未找到指定文件，继续或终止程序
         *filepath: 要复制文件的绝对路径"""
         global COPYDICT
         key = ''
         for file in filepath:
+            print("需要发送的文件路径：", file)
             file = os.path.realpath(file)
             if not os.path.exists(file):
                 if not_exists.upper() == 'IGNORE':

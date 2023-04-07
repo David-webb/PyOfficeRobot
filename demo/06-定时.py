@@ -1,3 +1,5 @@
+# schedule是python的第三方包
+
 # schedule.every().day.at("17:06:00").do().run_pending()
 # schedule.every(10).seconds.do(job)
 # schedule.every(10).minutes.do(job)

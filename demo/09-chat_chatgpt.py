@@ -10,6 +10,6 @@
 import PyOfficeRobot
 
 #
-PyOfficeRobot.chat.chat_by_gpt(who='程序员晚枫', api_key='你的api_key')
+PyOfficeRobot.chat.chat_by_gpt(who='DW', api_key='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')
 
 # 24小时、

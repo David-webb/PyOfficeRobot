@@ -6,7 +6,7 @@
 @Date    ：2023/3/19 15:05 
 @Description     ：
 '''
-
+import office
 import PyOfficeRobot
 from PyOfficeRobot.lib.CONST import NEW_LINE
 

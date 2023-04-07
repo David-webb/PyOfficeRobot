@@ -23,7 +23,7 @@ isinstance (a,(str,int,list))    # 只要满足元组类型中的其中一个即
 """
 
 uia.uiautomation.SetGlobalSearchTimeout(2)
-wechat_win = uia.WindowControl(Depth=1,Name="微信",ClassName="WeChatMainWndForPC")
+wechat_win = uia.WindowControl(Depth=1, Name="微信", ClassName="WeChatMainWndForPC")
 wechat_win.SwitchToThisWindow()
 wechat_win.SetActive()
 wechat_win.SetTopmost()

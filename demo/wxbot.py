@@ -1,5 +1,6 @@
 from PR.Dumogu.WeChatType import *
 
+
 def send_msg(msg):
     """
     直接发送消息，对核心文件修正后的封装，可以发送换行信息
@@ -149,31 +150,36 @@ def check_msg(temp, msg, t):
         return True
 
 
-wx = WeChat()  # 获取当前微信客户端
-wx.ChatWith('文件助手')
-wind = 1
-temp_msg, msg_dic, temp_dic = '', {}, {}  # 存储最后一条消息，最后一条消息字典，存储所有消息字典
-bot_list = ['小熊', '阿雨', '']  # admin的权限人员，可以远程调整pdbot
-data = BRAIN(f'I:/EXE/WX/Log/Data_brain.db', 'question,answer,type')
-while True:
-    try:
-        receive_msg, chat = wx.GetLastMessage
-        msg_dic[chat] = receive_msg
-        chat = '小熊' if not chat else chat
-        if receive_msg != temp_msg:
-            if chat == '小熊':
-                if check_msg(temp_dic, msg_dic, chat):
-                    prt(f'时间：{rtime()}, {chat}--> 消息内容：{receive_msg}')
-                    temp_dic[chat] = receive_msg
-            else:
-                if check_msg(temp_dic, msg_dic, chat):
-                    prt(f'时间：{rtime()}, From {chat}--> 消息内容：{receive_msg}', zi='紫')
-                    temp_dic[chat] = receive_msg
-            try:
-                main_reply(receive_msg, chat)  # 向聊天对象反馈消息
-            except Exception as ex:
-                print(traceback.format_exc(ex))
-    except IndexError:
-        pass
-    except TypeError:
-        pass
+def run():
+    wx = WeChat()  # 获取当前微信客户端
+    wx.ChatWith('文件助手')
+    wind = 1
+    temp_msg, msg_dic, temp_dic = '', {}, {}  # 存储最后一条消息，最后一条消息字典，存储所有消息字典
+    bot_list = ['小熊', '阿雨', '']  # admin的权限人员，可以远程调整pdbot
+    data = BRAIN(f'I:/EXE/WX/Log/Data_brain.db', 'question,answer,type')
+    while True:
+        try:
+            receive_msg, chat = wx.GetLastMessage
+            msg_dic[chat] = receive_msg
+            chat = '小熊' if not chat else chat
+            if receive_msg != temp_msg:
+                if chat == '小熊':
+                    if check_msg(temp_dic, msg_dic, chat):
+                        prt(f'时间：{rtime()}, {chat}--> 消息内容：{receive_msg}')
+                        temp_dic[chat] = receive_msg
+                else:
+                    if check_msg(temp_dic, msg_dic, chat):
+                        prt(f'时间：{rtime()}, From {chat}--> 消息内容：{receive_msg}', zi='紫')
+                        temp_dic[chat] = receive_msg
+                try:
+                    main_reply(receive_msg, chat)  # 向聊天对象反馈消息
+                except Exception as ex:
+                    print(traceback.format_exc(ex))
+        except IndexError:
+            pass
+        except TypeError:
+            pass
+
+
+if __name__ == "__main__":
+    pass

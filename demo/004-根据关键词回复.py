@@ -11,5 +11,8 @@ keywords = {
     "点赞了吗？": "点了",
     "关注了吗？": "必须的",
     "投币了吗？": "三连走起",
+    "滚": "好的",
+    "不想吃": "得吃！",
+    "哦": "嗯"
 }
-office.wechat.chat_by_keywords(who='每天进步一点点', keywords=keywords)
+office.wechat.chat_by_keywords(who='DW', keywords=keywords)

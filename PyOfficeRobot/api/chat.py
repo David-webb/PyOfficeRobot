@@ -78,7 +78,7 @@ def send_message_by_time(who, message, time):
 
 
 @instruction
-def chat_by_gpt(who, api_key, model_engine="text-davinci-002", max_tokens=1024, n=1, stop=None, temperature=0.5,
+def chat_by_gpt(who, api_key, model_engine="gpt-3.5-turbo", max_tokens=1024, n=1, stop=None, temperature=0.5,
                 top_p=1,
                 frequency_penalty=0.0, presence_penalty=0.6):
     wx.GetSessionList()  # 获取会话列表

@@ -5,4 +5,4 @@
 
 import office
 
-office.wechat.send_message(who='文件传输助手', message='你好，我是B站：程序员晚枫')
+office.wechat.send_message(who='文件传输助手', message='你好，这是pyoffice测试员')

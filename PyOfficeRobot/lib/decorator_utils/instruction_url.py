@@ -10,8 +10,6 @@
 
 # 每个文件的具体方法说明
 from functools import wraps
-
-
 import os
 
 from PyOfficeRobot.lib.CONST import SPLIT_LINE
@@ -22,6 +20,7 @@ chat_dict = {"chat_by_keywords": "https://www.bilibili.com/video/BV1fV4y1M7ju",
                "send_message_by_time": "https://www.bilibili.com/video/BV1m8411b7LZ",
                "chat_by_gpt": "https://blog.51cto.com/u_15493782/6131326",
 }
+
 file_dict = {
     "send_file": "https://www.bilibili.com/video/BV1te4y1y7Ro",
 
